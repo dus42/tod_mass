@@ -1,0 +1,31 @@
+# data and models are published on Zenodo, not here
+paper/data/
+models/*
+!models/README.md
+
+# identifiable flights from the Schiphol test (icao24, callsigns, positions)
+paper/results/eham_*
+paper/results/results_tod_eham_*
+
+# run outputs
+paper/logs/
+opensky_data/
+tod_mass_estimates.csv
+tod_features.parquet
+
+# latex build
+paper/latex/*.aux
+paper/latex/*.bbl
+paper/latex/*.bcf
+paper/latex/*.blg
+paper/latex/*.fdb_latexmk
+paper/latex/*.fls
+paper/latex/*.log
+paper/latex/*.out
+paper/latex/*.run.xml
+paper/latex/*.pdf
+
+# python
+__pycache__/
+*.pyc
+.venv/
