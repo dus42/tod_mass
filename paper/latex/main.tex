@@ -47,7 +47,7 @@
 
 
 % maximum five keywords
-\keywords{Aircraft Mass Estimation; Top of Descent; Arrivals; ADS-B; Post-flight Analysis; Machine Learning}
+\keywords{Aircraft Mass Estimation; Top of Descent; Arrivals; ADS-B; Machine Learning}
 
 % Important: don't overuse abbreviations. Only use abbreviations if the term is used more than ten times throughout the paper. Otherwise, write them in full.
 \abbreviations{
@@ -64,7 +64,7 @@
 
 \begin{document}
 \begin{abstract}
-  Aircraft mass strongly affects data-driven flight performance analyses, yet it is generally unavailable in open datasets. For post-flight analyses of arrival trajectories, the relevant quantity is the mass at the top of descent. This work presents a reusable machine learning approach for estimating it from ADS-B data, developed on the EUROCONTROL PRC Data Challenge 2024 dataset, whose disclosed takeoff weights, propagated along each trajectory with the OpenAP fuel flow model, provide reference masses for some 465{,}000 flights. The approach relies only on quantities a researcher can obtain independently: the trajectory itself, the aircraft type from the registry, and openly published aircraft properties. The ADS-B-only model reaches a mean absolute percentage error of 3.39~\% and a root mean squared error of 3{,}638~kg against the reference masses; adding openly available weather and flight information reduces these to 2.55~\% and 2{,}754~kg. The estimate is also robust to incomplete recordings, losing 0.38 percentage points under the coverage gaps measured in real trajectories. We release the pipeline that turns raw OpenSky data into top of descent mass estimates.
+  Aircraft mass strongly affects data-driven flight performance analyses, yet it is generally unavailable in open datasets. For post-flight analyses of arrival trajectories, the relevant quantity is the mass at the top of descent. This work presents a reusable machine learning approach for estimating it from ADS-B data, developed on the EUROCONTROL PRC Data Challenge 2024 dataset, whose disclosed takeoff weights, propagated along each trajectory with the OpenAP fuel flow model, provide reference masses for some 465{,}000 flights. The approach relies only on quantities a researcher can obtain independently: the trajectory itself, the aircraft type from the registry, and openly published aircraft properties. The ADS-B-only model reaches a mean absolute percentage error of 3.39~\% and a root mean squared error of 3{,}638~kg against the reference masses; adding openly available weather and flight information reduces these to 2.55~\% and 2{,}754~kg. The estimate is also robust to incomplete recordings, losing 0.38 percentage points under the coverage gaps measured in real trajectories. We release the pipeline that turns raw OpenSky data into top-of-descent mass estimates.
 \end{abstract}
 
 \section{Introduction}
@@ -529,8 +529,8 @@ The measured masks show that real gaps are substantial and follow a clear patter
     25\,\% & 4.22 & 3.95 & 3.71 \\
     50\,\% & 4.51 & 4.00 & 4.19 \\
     \midrule
-    \multicolumn{2}{@{}l}{Measured mask} & \multicolumn{2}{r}{3.71} \\
-    \multicolumn{2}{@{}l}{Unmasked} & \multicolumn{2}{r}{3.33} \\
+    \multicolumn{2}{@{}l}{Measured mask} & & 3.71 \\
+    \multicolumn{2}{@{}l}{Unmasked} & & 3.33 \\
     \bottomrule
     \end{tabular}
     \caption{Estimation error when part of the descent is missing, ADS-B-only features.}
@@ -636,14 +636,14 @@ The pipeline was also checked against the training code. Run on the raw recordin
 \end{itemize}
 
 \section*{Funding statement}
-This work was performed within the NEEDED project, funded by the European Union’s Horizon Europe research and innovation programme under grant agreement no. 101095754. This publication solely reflects the authors’ view, and neither the European Union nor the funding agency can be held responsible for the information it contains.
+This work was performed within the NEEDED project, funded by the European Union’s Horizon Europe research and innovation programme under grant agreement no. 101095754. This publication solely reflects the authors’ views, and neither the European Union nor the funding agency can be held responsible for the information it contains.
 
 \section*{Open data statement}
-The data used in this study are available on Zenodo at \url{https://doi.org/10.5281/zenodo.23192887}.
+The data generated in this study are available on Zenodo at \url{https://doi.org/10.5281/zenodo.23192887}.
 
 \section*{Reproducibility statement}
 \label{reproducibility}
-The code used in this study, including the scripts that produce every figure and table, is publicly available at \url{https://github.com/dus42/tod_mass}.
+The data processing pipeline and code used in this study, including the scripts that produce every figure and table, are publicly available at \url{https://github.com/dus42/tod_mass}.
 
 \printbibliography
 
