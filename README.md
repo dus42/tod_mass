@@ -57,6 +57,10 @@ uv run python pipeline_tod.py --input trajectories.parquet \
 | `model_tod_noweather_all_finfo_nomassrange` | ADS-B and flight information | 2.72 % |
 | `model_tod_weather_all_finfo_nomassrange` | ADS-B, weather and flight information | 2.55 % |
 
+![MAPE per aircraft type for the four models](paper/latex/figures/mape_per_ac.png)
+
+*Test-set MAPE per aircraft type for the four models.*
+
 `estimate_tod_from_opensky.py` picks the model that matches the available inputs. The models predict the TOD mass as a fraction of the MTOW, so they also apply to aircraft types absent from training, with a larger error.
 
 ## Reproducing the paper
