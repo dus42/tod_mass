@@ -29,7 +29,7 @@ Trajectories are not redistributed. Place the inputs in `data/`:
 |---|---|
 | `data/24challenge_data/*.parquet` | raw trajectories of the [PRC Data Challenge 2024](https://ansperformance.eu/study/data-challenge/) |
 | `data/flight_list.csv` | flight list of the PRC Data Challenge 2024 |
-| `data/todmass_full.csv` | TOD features and reference masses, from Zenodo: **[DOI to be added]** |
+| `data/todmass_full.csv` | TOD features and reference masses, from Zenodo: [10.5281/zenodo.23192887](https://doi.org/10.5281/zenodo.23192887) |
 
 With `data/todmass_full.csv` from Zenodo, the first three steps can be skipped (`./run_all.sh train`). The experiments on incomplete descents also need the raw trajectories, and the pipeline check also needs `data/traj_tod_full.parquet` from the `features` step.
 

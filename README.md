@@ -8,7 +8,7 @@ The models were trained on 464,633 flights of the [EUROCONTROL PRC Data Challeng
 
 - Python 3.11 or newer and [uv](https://docs.astral.sh/uv/)
 - **An OpenSky Network account with Trino access**, to download ADS-B data (see below)
-- The trained models, from Zenodo: **[DOI to be added]**, placed in `models/`
+- The trained models, from Zenodo: [10.5281/zenodo.23192887](https://doi.org/10.5281/zenodo.23192887), placed in `models/`
 
 ```bash
 git clone https://github.com/dus42/tod_mass.git
