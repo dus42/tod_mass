@@ -501,7 +501,9 @@ def main(input_, output, weather, local_store, workers, model, min_descent, flig
         df = df.assign(
             tod_mass_pred=booster.predict(X, num_threads=1) * df["m_tow"]
         )
-        df[["flight_id", "aircraft_type", "tod_mass_pred"]].to_csv(
+        cols = ["flight_id", "callsign", "aircraft_type", "adep", "tod_time",
+                "tod_lat", "tod_lon", "tod_alt", "tod_mass_pred"]
+        df[[c for c in cols if c in df.columns]].to_csv(
             Path(output).with_suffix(".predictions.csv"), index=False
         )
         print(df[["flight_id", "aircraft_type", "tod_mass_pred"]].head().to_string(index=False))

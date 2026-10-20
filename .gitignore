@@ -12,6 +12,7 @@ paper/logs/
 opensky_data/
 tod_mass_estimates.csv
 tod_features.parquet
+*.predictions.csv
 
 # latex build
 paper/latex/*.aux

@@ -41,12 +41,22 @@ uv run python estimate_tod_from_opensky.py --arrival-airport EHAM \
 
 The output CSV has one row per flight: `flight_id, icao24, callsign, aircraft_type, wtc, adep, ades, tod_time, tod_lat, tod_lon, tod_alt, tod_mass_estimate, unseen_type, unseen_airport`. The last two columns flag aircraft types or airports the model was not trained on; those estimates are the least reliable.
 
-For your own trajectory files, `pipeline_tod.py` runs the same feature extraction and prediction:
+### Your own data
+
+`pipeline_tod.py` runs the same feature extraction and prediction on files you already have:
 
 ```bash
-uv run python pipeline_tod.py --input trajectories.parquet \
-    --model model_tod_noweather_all_nomassrange.txt
+uv run python pipeline_tod.py --input my_adsb/ --flight-list flight_list.csv \
+    --output tod_features.parquet --model model_tod_noweather_all_finfo_nomassrange.txt
 ```
+
+| Input | Format |
+|---|---|
+| ADS-B | raw OpenSky state vectors (as returned by Trino, pyopensky or traffic), saved as `.parquet` or `.csv`; one file or a folder of them, e.g. one per day |
+| Flight list (optional) | OpenSky flight list saved as `.csv`, with `icao24, callsign, firstseen, lastseen, departure, arrival` |
+| Weather (optional) | nothing to prepare: with `--weather`, fastmeteo downloads ERA5 for the period on first use and caches it in `--local-store` (default `/tmp/era5-zarr`) |
+
+Choose the model that matches the inputs (see below). The run writes the descent features to `tod_features.parquet` and the estimates to `tod_features.predictions.csv`: `flight_id, callsign, aircraft_type, adep, tod_time, tod_lat, tod_lon, tod_alt, tod_mass_pred` (`adep` only with a flight list).
 
 ## Models
 
